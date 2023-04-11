@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('dashboard.edit', [
             'user' => $request->user(),
         ]);
     }
@@ -36,9 +36,9 @@ class ProfileController extends Controller
         $user->url_photo = $validatedData['picture'];
 
         if ($user->save()) {
-            return redirect()->route('profile.edit')->with('status', 'profile-updated');
+            return redirect()->route('dashboard.edit')->with('status', 'dashboard-updated');
         } else {
-            return redirect()->route('profile.edit')->with('error', 'profile-update-failed');
+            return redirect()->route('dashboard.edit')->with('error', 'dashboard-update-failed');
         }
     }
 

@@ -1,8 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WallController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +24,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/explore', [ExploreController::class, 'index'])->middleware(['auth', 'verified'])->name('explore');
+
+Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
+
+Route::get('/wall', [WallController::class, 'index'])->middleware(['auth', 'verified'])->name('wall');
+
 Route::resource('posts', PostController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', function () {
+    return view('home');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard', [DashboardController::class, 'edit'])->name('dashboard.edit');
+    Route::patch('/dashboard', [DashboardController::class, 'update'])->name('dashboard.update');
+    Route::delete('/dashboard', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
 });
 
 require __DIR__.'/auth.php';

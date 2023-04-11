@@ -13,12 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         \App\Models\User::factory(10)->create();
-        \App\Models\Post::factory(1)->create();
+        \App\Models\Post::factory(40)->create();
         $this->call((PostSeeder::class));
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

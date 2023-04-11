@@ -17,9 +17,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'description' => "Mon chat est trop mignon",
+            'description' => $this->faker->sentence,
             'img_url' => $this->faker->imageUrl(640, 480, 'cats'),
-            'user_id' => 1
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
     
