@@ -24,11 +24,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/explore', [ExploreController::class, 'index'])->middleware(['auth', 'verified'])->name('explore');
+Route::get('/explore', [ExploreController::class, 'show'])->middleware(['auth', 'verified'])->name('explore');
 
 Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
+Route::patch('/feed', [FeedController::class, 'add'])->middleware(['auth', 'verified'])->name('feed.update');
 
-Route::get('/wall', [WallController::class, 'index'])->middleware(['auth', 'verified'])->name('wall');
+Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
 
 Route::resource('posts', PostController::class);
 
