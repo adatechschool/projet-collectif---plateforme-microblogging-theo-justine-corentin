@@ -27,7 +27,9 @@ Route::get('/', function () {
 Route::get('/explore', [ExploreController::class, 'show'])->middleware(['auth', 'verified'])->name('explore');
 
 Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
-Route::patch('/feed', [FeedController::class, 'add'])->middleware(['auth', 'verified'])->name('feed.update');
+
+// route to add post to db
+Route::post('/', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
 
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
 

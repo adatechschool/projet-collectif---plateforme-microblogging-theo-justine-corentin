@@ -10,7 +10,8 @@ class ExploreController extends Controller
 
     public function show(Request $request)
     {
-        $post = Post::all();
+        $postsPerPage = 100; // Nombre de posts par page, vous pouvez ajuster cette valeur
+        $post = Post::paginate($postsPerPage);
         return view('explore', ['post' => $post]);
     }
 }
