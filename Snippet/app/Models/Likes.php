@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Likes extends Model
 {
     public $timestamps = false;
-    public function posts() {
-        return $this->hasMany(Likes::class);
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     protected $fillable = [
         'post_id',

@@ -31,17 +31,38 @@
                         {{ $post['description'] }}
                     </a>
                     <img src="{{ $post['img_url'] }}">
-                    <form method="POST" action="{{ route('addLike.update') }}">
-                        <!-- VALEUR DU POST -->
-                        <input type="hidden" name="page" value="{{ Request::url() }}">
-                        <input type="hidden" name="id_post" value="{{ $post['id'] }}">
-                        @csrf
-                        <div>
-                            <x-primary-button class="ml-3">
-                                {{ __('like') }}
-                            </x-primary-button>
-                        </div>
-                    </form>
+
+                    @php
+                        $userLikedPost = $post->likes->where('user_id', auth()->user()->id)->isNotEmpty();
+                    @endphp
+                    <!-- LIKÉ -->
+                    @if ($userLikedPost)
+                        <form method="POST" action="{{ route('addLike.destroy') }}">
+                            <!-- VALEUR DU POST -->
+                            <input type="hidden" name="page" value="{{ Request::url() }}">
+                            <input type="hidden" name="id_like" value="{{ $post->likes->firstWhere('user_id', auth()->user()->id)->id }}">
+                            @csrf
+                            <div>
+                                <x-primary-button class="ml-3">
+                                    {{ __('Unlike') }}
+                                </x-primary-button>
+                            </div>
+                        </form>
+                    <!-- NON LIKÉ -->
+                    @else
+                        <form method="POST" action="{{ route('addLike.update') }}">
+                            <!-- VALEUR DU POST -->
+                            <input type="hidden" name="page" value="{{ Request::url() }}">
+                            <input type="hidden" name="id_post" value="{{ $post['id'] }}">
+                            @csrf
+                            <div>
+                                <x-primary-button class="ml-3">
+                                    {{ __('like') }}
+                                </x-primary-button>
+                            </div>
+                        </form>
+                    @endif      
+                    <p>{{$post->likes->count()}} ❤️</p>         
                     </div>
                 @endforeach
             </div>

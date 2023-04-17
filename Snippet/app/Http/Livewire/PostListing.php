@@ -23,7 +23,12 @@ class PostListing extends Component
 
     public function loadPosts()
     {
-        $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(12, ['*'], 'page', $this->pageNumber);
+        $userId = auth()->user()->id;
+
+
+        $posts = Post::with(['user', 'likes'])
+        ->orderBy('created_at', 'desc')
+        ->paginate(12, ['*'], 'page', $this->pageNumber);
 
         $this->pageNumber += 1;
 
@@ -31,7 +36,6 @@ class PostListing extends Component
 
         $this->posts->push(...$posts->items());
     }
-
     public function render()
     {
         return view('explore')->layout('layouts.explore');

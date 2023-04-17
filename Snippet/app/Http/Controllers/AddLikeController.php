@@ -26,4 +26,16 @@ class AddLikeController extends Controller
 
         return redirect()->to($routeName)->with('success', 'Like succès');
     }
+
+    public function destroy(Request $request)
+    {
+        $routeName = $request->input('page');
+        $id = $request->input('id_like');
+
+        $result = Likes::find($id);
+
+        $result->delete();
+
+        return redirect()->to($routeName)->with('success', 'Unlike succès');
+    }
 }
