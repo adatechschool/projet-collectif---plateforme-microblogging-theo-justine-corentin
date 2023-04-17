@@ -11,16 +11,16 @@
         <h1 class="font-semibold text-2xl text-gray-800">All Posts</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-4">
                 @foreach($posts as $post)
-                    <a href="#" class="block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
-                    <h2 class="truncate font-semibold text-lg text-gray-800">
-                            {{ $post['user']['name'] }}
-                        </h2>
-                        <h2 class="truncate font-semibold text-lg text-gray-800">
-                            {{ $post['description'] }}
-                        </h2>
+                    <div class="block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
+                    <a href='/walls/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
+                        {{ $post['user']['name'] }}
+                    </a>
+                    <a class="truncate font-semibold text-lg text-gray-800">
+                        {{ $post['description'] }}
+                    </a>
 
                     <img src="{{ $post['img_url'] }}">
-                    </a>
+                    </div>
                 @endforeach
             </div>
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WallController;
+use App\Http\Controllers\WallUsersController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,11 @@ Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'veri
 // route to add post to db
 Route::post('/', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
 
+// WALL PERSO CO
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
+
+// WALL AUTRE USER
+Route::resource('/walls', WallUsersController::class)->middleware(['auth', 'verified']);
 
 Route::get('/home', function () {
     return view('home');
