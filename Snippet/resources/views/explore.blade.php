@@ -9,7 +9,7 @@
     </div>
     <div class="container p-4 mx-auto">
         <h1 class="font-semibold text-2xl text-gray-800">All Posts</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-4">
                 @foreach($posts as $post)
                     <a href="#" class="block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
                     <h2 class="truncate font-semibold text-lg text-gray-800">
