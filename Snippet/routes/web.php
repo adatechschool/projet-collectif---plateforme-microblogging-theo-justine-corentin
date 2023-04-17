@@ -24,16 +24,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/explore', [ExploreController::class, 'show'])->middleware(['auth', 'verified'])->name('explore');
+Route::get('/explore', App\Http\Livewire\PostListing::class)->middleware(['auth', 'verified'])->name('explore');
 
 Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
+
+// Route::get('/posts', App\Http\Livewire\PostListing::class)->name('posts.listing');
 
 // route to add post to db
 Route::post('/', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
 
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
-
-Route::resource('posts', PostController::class);
 
 Route::get('/home', function () {
     return view('home');
