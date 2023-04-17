@@ -23,9 +23,6 @@
                         <a href='/walls/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
                             {{$post['user']['name']}}
                         </a>
-                        <a href='/walls/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
-                            {{$post['id']}}
-                        </a>
                     @endif
                     <a class="truncate font-semibold text-lg text-gray-800">
                         {{ $post['description'] }}
