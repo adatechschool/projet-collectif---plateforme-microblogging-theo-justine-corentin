@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ExploreController extends Controller
 {
+
     public function show(Request $request)
     {
 

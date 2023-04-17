@@ -23,7 +23,7 @@ class PostListing extends Component
 
     public function loadPosts()
     {
-        $posts = Post::paginate(12, ['*'], 'page', $this->pageNumber);
+        $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(12, ['*'], 'page', $this->pageNumber);
 
         $this->pageNumber += 1;
 
