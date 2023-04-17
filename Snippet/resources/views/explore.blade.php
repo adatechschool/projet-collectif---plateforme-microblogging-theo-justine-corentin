@@ -1,3 +1,6 @@
+@php
+    $connectedUserId = auth()->user()->id;
+@endphp
 
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -6,26 +9,39 @@
 </x-slot>
 <div>
     <div>
-        
         </div>
         <div class="container p-4 mx-auto">
             <h1 class="font-semibold text-2xl text-gray-800">All Posts</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-4">
                 @foreach($posts as $post)
                 <div class="block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
-                        @php
-                            $connectedUserId = auth()->user()->id;
-                        @endphp
                     @if ($connectedUserId === $post['user']['id'])
                         <a href='/wall' class="truncate font-semibold text-lg text-gray-800">
+                            {{$post['user']['name']}}
+                        </a>
                     @else
                         <a href='/walls/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
+                            {{$post['user']['name']}}
+                        </a>
+                        <a href='/walls/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
+                            {{$post['id']}}
+                        </a>
                     @endif
                     <a class="truncate font-semibold text-lg text-gray-800">
                         {{ $post['description'] }}
                     </a>
-
                     <img src="{{ $post['img_url'] }}">
+                    <form method="POST" action="{{ route('addLike.update') }}">
+                        <!-- VALEUR DU POST -->
+                        <input type="hidden" name="page" value="{{ Request::url() }}">
+                        <input type="hidden" name="id_post" value="{{ $post['id'] }}">
+                        @csrf
+                        <div>
+                            <x-primary-button class="ml-3">
+                                {{ __('like') }}
+                            </x-primary-button>
+                        </div>
+                    </form>
                     </div>
                 @endforeach
             </div>

@@ -31,7 +31,6 @@
             <!-- Page Content -->
             <main>
                 <div>
-                    @include('layouts.post')
                     {{ $slot }}
                 </div>
             </main>

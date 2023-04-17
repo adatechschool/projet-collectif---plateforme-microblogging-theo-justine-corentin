@@ -6,6 +6,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WallController;
 use App\Http\Controllers\WallUsersController;
+use App\Http\Controllers\AddLikeController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,11 @@ Route::get('/explore', App\Http\Livewire\PostListing::class)->middleware(['auth'
 
 Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
 
-// Route::get('/posts', App\Http\Livewire\PostListing::class)->name('posts.listing');
-
-// route to add post to db
+// ROUTE ADD POST TO DB
 Route::post('/', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
+
+//ROUTE ADD LIKE TO DB
+Route::post('/', [AddLikeController::class, 'create'])->middleware(['auth', 'verified'])->name('addLike.update');
 
 // WALL PERSO CO
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
