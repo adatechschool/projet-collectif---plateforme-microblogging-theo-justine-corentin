@@ -7,6 +7,24 @@
     <div>
         <p class="font-semibold text-xl text-gray-100 dark:text-gray-200 leading-tight">Biography: {{$user['biography']}}</p>
         <img src="{{ $user['url_photo'] }}" alt="Photo de profil" class="w-20 h-20 rounded-full object-cover">
+        <div>
+        @php
+            $subscription = $subscriptions->firstWhere('followed_id', $user->id);
+        @endphp
+            @if ($subscription)
+            <div>
+            <x-primary-button class="ml-3" wire:click.prevent="deleteSub({{ $user['id'] }}, {{ $subscription['id'] }})">
+                {{ __('DESABONNER') }}
+            </x-primary-button>
+            </div>
+            @else
+            <div>
+                <x-primary-button class="ml-3" wire:click.prevent="addSub({{ $user['id'] }})">
+                    {{ __("S'ABONNER") }}
+                </x-primary-button>
+            </div>
+            @endif
+        </div>
         <div class="container p-4 mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-4">
                 @foreach($posts as $post)
