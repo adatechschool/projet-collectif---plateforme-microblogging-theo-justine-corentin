@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', PostListing::class)->middleware(['auth', 'verified'])->name('explore');
 
 Route::get('/explore', PostListing::class)->middleware(['auth', 'verified'])->name('explore');
 

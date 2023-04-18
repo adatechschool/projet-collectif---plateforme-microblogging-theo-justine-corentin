@@ -32,6 +32,7 @@
                             {{ __('🗑️') }}
                         </x-primary-button>
                     @endif
+                    <img src="{{ $post['user']['url_photo'] }}" alt="Photo de profil" class="w-20 h-20 rounded-full object-cover">
                     <img src="{{ $post['img_url'] }}">
                     @php
                         $likesCollection = collect($post['likes']);

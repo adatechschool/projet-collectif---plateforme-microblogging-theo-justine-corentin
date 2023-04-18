@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class WallController extends Controller
 {
 
+    
     public function show(Request $request)
     {
         // Récupérer l'utilisateur connecté

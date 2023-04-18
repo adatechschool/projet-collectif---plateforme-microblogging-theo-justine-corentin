@@ -22,6 +22,9 @@
                     <h2 class="truncate font-semibold text-lg text-gray-800">
                         {{ $posts->description }}
                     </h2>
+                    <x-primary-button class="ml-3">
+                        {{ __('🗑️') }}
+                    </x-primary-button>
                     <img src="{{ $posts->img_url }}" class="object-cover">
                 </div>
                 @endforeach

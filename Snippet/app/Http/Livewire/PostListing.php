@@ -10,11 +10,10 @@ use Livewire\Component;
 class PostListing extends Component
 {
     public $posts;
-
+    protected $listeners = ['removePostRequested' => 'removePost'];
     public $pageNumber = 1;
 
     public $hasMorePages;
-
     public function removePost($postId)
     {
         $post = Post::find($postId);
