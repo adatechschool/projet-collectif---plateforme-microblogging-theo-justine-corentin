@@ -19,9 +19,6 @@
                         <a href='/wall' class="truncate font-semibold text-lg text-gray-800">
                             {{$post['user']['name']}}
                         </a>
-                        <x-primary-button class="ml-3" wire:click.prevent="removePost({{ $post['id'] }})">
-                            {{ __('🗑️') }}
-                        </x-primary-button>
                     @else
                         <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
                             {{$post['user']['name']}}
@@ -30,6 +27,11 @@
                     <a class="truncate font-semibold text-lg text-gray-800">
                         {{ $post['description'] }}
                     </a>
+                    @if ($connectedUserId === $post['user']['id'])
+                        <x-primary-button class="ml-3" wire:click.prevent="removePost({{ $post['id'] }})">
+                            {{ __('🗑️') }}
+                        </x-primary-button>
+                    @endif
                     <img src="{{ $post['img_url'] }}">
                     @php
                         $likesCollection = collect($post['likes']);
