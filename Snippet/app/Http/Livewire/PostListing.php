@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use App\Models\Likes;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
@@ -14,6 +15,39 @@ class PostListing extends Component
 
     public $hasMorePages;
 
+    public function addLike($postId)
+    {
+        $like = new Likes([
+            'post_id' => $postId,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        $like->save();
+
+        // Recharger les posts
+        $this->posts = $this->posts->map(function ($post) use ($postId, $like) {
+            if ($post['id'] == $postId) {
+                $post['likes'][] = $like;
+            }
+            return $post;
+        });
+    }
+
+    public function removeLike($postId, $likeId)
+    {
+        $like = Likes::find($likeId);
+        $like->delete();
+
+        // Recharger les posts
+        $this->posts = $this->posts->map(function ($post) use ($postId, $likeId) {
+            if ($post['id'] == $postId) {
+                $post['likes'] = array_filter($post['likes'], function ($like) use ($likeId) {
+                    return $like['id'] != $likeId;
+                });
+            }
+            return $post;
+        });
+    }
     public function mount()
     {
         $this->posts = new Collection();
@@ -24,8 +58,7 @@ class PostListing extends Component
     public function loadPosts()
     {
         $userId = auth()->user()->id;
-
-
+        
         $posts = Post::with(['user', 'likes'])
         ->orderBy('created_at', 'desc')
         ->paginate(12, ['*'], 'page', $this->pageNumber);

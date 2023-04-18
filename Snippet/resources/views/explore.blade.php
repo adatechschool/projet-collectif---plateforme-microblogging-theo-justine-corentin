@@ -28,16 +28,17 @@
                         {{ $post['description'] }}
                     </a>
                     <img src="{{ $post['img_url'] }}">
-
                     @php
-                        $userLikedPost = $post->likes->where('user_id', auth()->user()->id)->isNotEmpty();
+                        $likesCollection = collect($post['likes']);
+                        $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
                     @endphp
                     <!-- LIKÉ -->
                     @if ($userLikedPost)
-                        <form method="POST" action="{{ route('addLike.destroy') }}">
+                        <!-- LIKÉ -->
+                        <form method="POST" wire:submit.prevent="removeLike({{ $post['id'] }}, {{ $likesCollection->firstWhere('user_id', auth()->user()->id)['id'] }})">
                             <!-- VALEUR DU POST -->
                             <input type="hidden" name="page" value="{{ Request::url() }}">
-                            <input type="hidden" name="id_like" value="{{ $post->likes->firstWhere('user_id', auth()->user()->id)->id }}">
+                            <input type="hidden" name="id_like" value="{{ $likesCollection->firstWhere('user_id', auth()->user()->id)['id'] }}">
                             @csrf
                             <div>
                                 <x-primary-button class="ml-3">
@@ -45,21 +46,21 @@
                                 </x-primary-button>
                             </div>
                         </form>
-                    <!-- NON LIKÉ -->
                     @else
-                        <form method="POST" action="{{ route('addLike.update') }}">
-                            <!-- VALEUR DU POST -->
-                            <input type="hidden" name="page" value="{{ Request::url() }}">
-                            <input type="hidden" name="id_post" value="{{ $post['id'] }}">
-                            @csrf
-                            <div>
-                                <x-primary-button class="ml-3">
-                                    {{ __('like') }}
-                                </x-primary-button>
-                            </div>
-                        </form>
+                    <!-- NON LIKÉ -->
+                    <form method="POST" wire:submit.prevent="addLike({{ $post['id'] }})">
+                        <!-- VALEUR DU POST -->
+                        <input type="hidden" name="page" value="{{ Request::url() }}">
+                        <input type="hidden" name="id_post" value="{{ $post['id'] }}">
+                        @csrf
+                        <div>
+                            <x-primary-button class="ml-3">
+                                {{ __('like') }}
+                            </x-primary-button>
+                        </div>
+                    </form>
                     @endif      
-                    <p>{{$post->likes->count()}} ❤️</p>         
+                    <p>{{$likesCollection->count()}} ❤️</p>   
                     </div>
                 @endforeach
             </div>

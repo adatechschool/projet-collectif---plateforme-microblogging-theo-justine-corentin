@@ -33,12 +33,6 @@ Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'veri
 // ROUTE ADD POST TO DB
 Route::post('/post', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
 
-//ROUTE ADD LIKE TO DB
-Route::post('/addLike', [AddLikeController::class, 'create'])->middleware(['auth', 'verified'])->name('addLike.update');
-// ROUTE DESTROY LIKE TO DB
-Route::post('/deleteLike', [AddLikeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('addLike.destroy');
-
-
 // WALL PERSO CO
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
 
