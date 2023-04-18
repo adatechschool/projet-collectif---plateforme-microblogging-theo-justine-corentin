@@ -53,8 +53,8 @@
                             <div id="likes" class="flex flex-row items-center">
                             
                             @php
-                            $likesCollection = collect($post['likes']);
-                            $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
+                                $likesCollection = collect($post['likes']);
+                                $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
                             @endphp
                             <!-- LIKÉ -->
                             @if ($userLikedPost)

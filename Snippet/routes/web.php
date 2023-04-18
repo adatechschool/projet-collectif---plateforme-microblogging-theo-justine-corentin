@@ -6,6 +6,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\WallController;
 use App\Http\Livewire\WallUsers;
 use App\Http\Livewire\PostListing;
+use App\Http\Livewire\FeedListing;
+use App\Http\Controllers\SearchController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -25,16 +27,17 @@ Route::get('/', PostListing::class)->middleware(['auth', 'verified'])->name('exp
 
 Route::get('/explore', PostListing::class)->middleware(['auth', 'verified'])->name('explore');
 
-Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
+Route::get('/feed', FeedListing::class)->middleware(['auth', 'verified'])->name('feed');
 
-// ROUTE ADD POST TO DB
-Route::post('/post', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+// WALL AUTRE USER
+Route::get('/wall/{id}', WallUsers::class)->middleware(['auth', 'verified'])->name('wall.show');
 
 // WALL PERSO CO
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
 
-// WALL AUTRE USER
-Route::get('/wall/{id}', WallUsers::class)->middleware(['auth', 'verified'])->name('wall.show');
+// ROUTE ADD POST TO DB
+Route::post('/post', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
 
 Route::get('/home', function () {
     return view('home');

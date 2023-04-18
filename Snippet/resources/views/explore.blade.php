@@ -21,19 +21,34 @@
                         </div>
                         <div>
                             @if ($connectedUserId === $post['user']['id'])
-                                <a href='/wall' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-600">
-                                    {{$post['user']['name']}}
-                                </a>
+                            <a href='/wall' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-700">
+                                {{$post['user']['name']}}
+                            </a>
                             @else
-                                <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-600">
-                                    {{$post['user']['name']}}
-                                </a>
+                                @php
+                                    $subscription = $subscriptions->firstWhere('followed_id', $post['user']['id']);
+                                @endphp
+                                    <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-700">
+                                        {{$post['user']['name']}}
+                                    </a>
+                                    @if ($subscription)
+                                        <div>
+                                            <x-primary-button class="ml-3" wire:click.prevent="deleteSub({{ $subscription['id'] }})">
+                                                {{ __('DESABONNER') }}
+                                            </x-primary-button>
+                                        </div>
+                                    @else
+                                        <div>
+                                            <x-primary-button class="ml-3" wire:click.prevent="addSub({{ $post['user']['id'] }})">
+                                                {{ __("S'ABONNER") }}
+                                            </x-primary-button>
+                                        </div>
+                                    @endif
                                 @endif
                                 <br />
                             </div>
                         </div>
                         <div id="post-content" class="mt-2 mb-4 ">
-
                             <a class="font-regular text-s text-gray-800">
                                 {{ $post['description'] }}
                             </a>
@@ -41,10 +56,9 @@
                         </div>
                     <div id="post-footer" class="flex flex-row justify-between ">
                         <div id="likes" class="flex flex-row items-center">
-                            
                             @php
-                            $likesCollection = collect($post['likes']);
-                            $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
+                                $likesCollection = collect($post['likes']);
+                                $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
                             @endphp
                             <!-- LIKÉ -->
                             @if ($userLikedPost)
@@ -55,25 +69,24 @@
                             </div>
                             
                             @else
-                            <!-- NON LIKÉ -->
-                            <div>
-                                <x-primary-button class="" wire:click.prevent="addLike({{ $post['id'] }})">
-                                    {{ __('like') }}
-                                </x-primary-button>
-                            </div>
+                                <!-- NON LIKÉ -->
+                                <div>
+                                    <x-primary-button class="" wire:click.prevent="addLike({{ $post['id'] }})">
+                                        {{ __('like') }}
+                                    </x-primary-button>
+                                </div>
                             @endif      
                             <p class="ml-3">{{$likesCollection->count()}} ❤️</p>   
                         </div>
                         <div id="deletePost">
-
                             @if ($connectedUserId === $post['user']['id'])
-                            <x-primary-button class="ml-3" wire:click.prevent="removePost({{ $post['id'] }})">
-                                {{ __('🗑️') }}
-                            </x-primary-button>
+                                <x-primary-button class="ml-3" wire:click.prevent="removePost({{ $post['id'] }})">
+                                    {{ __('🗑️') }}
+                                </x-primary-button>
                             @endif
                         </div>
                     </div>
-            </div>
+                </div>
             @endforeach
         </div>
 

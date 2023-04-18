@@ -15,22 +15,22 @@ class WallUsers extends Component
 
     public $user;
     public $posts;
-    public $subscriptions;
+        public $subscriptions;
 
-    public function addSub($userId) {
-        $sub = new Subscription([
-            'followed_id' => $userId,
-            'following_id' => auth()->user()->id,
-        ]);
+        public function addSub($userId) {
+            $sub = new Subscription([
+                'followed_id' => $userId,
+                'following_id' => auth()->user()->id,
+            ]);
 
-        $sub->save();
+            $sub->save();
 
-        // Ajouter le nouvel abonnement à la collection d'abonnements
-        $this->subscriptions->push($sub);
+            // Ajouter le nouvel abonnement à la collection d'abonnements
+            $this->subscriptions->push($sub);
 
-        // Émettre un événement pour recharger la page (si nécessaire)
-        $this->emit('subscriptionAdded');
-    }
+            // Émettre un événement pour recharger la page (si nécessaire)
+            $this->emit('subscriptionAdded');
+        }
 
     public function deleteSub($userId, $subscriptionId)
     {
