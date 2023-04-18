@@ -1,30 +1,35 @@
 <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
             Wall of {{ $user->name }}
         </h2>
     </x-slot>
     <div>
     <div>
-        <p class="font-semibold text-xl text-gray-100 dark:text-gray-200 leading-tight">Biography: {{$user['biography']}}</p>
-        <img src="{{ $user['url_photo'] }}" alt="Photo de profil" class="w-20 h-20 rounded-full object-cover">
-        <div>
-        @php
-            $subscription = $subscriptions->firstWhere('followed_id', $user->id);
-        @endphp
-            @if ($subscription)
-            <div>
-            <x-primary-button class="ml-3" wire:click.prevent="deleteSub({{ $user['id'] }}, {{ $subscription['id'] }})">
-                {{ __('DESABONNER') }}
-            </x-primary-button>
-            </div>
-            @else
-            <div>
-                <x-primary-button class="ml-3" wire:click.prevent="addSub({{ $user['id'] }})">
-                    {{ __("S'ABONNER") }}
+
+        <div id="presentation" class="flex flex-col text-center gap-1">
+            <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-32 h-32 rounded-full object-cover mx-auto my-4">
+            <p class="font-semibold text-xl text-gray-100 dark:text-gray-200 leading-tight">{{$user->name}}</p>
+            <p class="font-regular text-base text-gray-100 dark:text-gray-200 leading-tight">{{$user->biography}}</p>
+            <div id="subscription">
+            @php
+                $subscription = $subscriptions->firstWhere('followed_id', $user->id);
+            @endphp
+                @if ($subscription)
+                <div>
+                <x-primary-button class="m-4" wire:click.prevent="deleteSub({{ $user['id'] }}, {{ $subscription['id'] }})">
+                    {{ __('SE DÉSABONNER') }}
                 </x-primary-button>
+                </div>
+                @else
+                <div>
+                    <x-primary-button class="m-4" wire:click.prevent="addSub({{ $user['id'] }})">
+                        {{ __("S'ABONNER") }}
+                    </x-primary-button>
+                </div>
+                @endif
             </div>
-            @endif
         </div>
+
         <div class="max-w-3xl p-4 mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 mt-4">
                 @foreach($posts as $post)
@@ -39,13 +44,13 @@
                         
                         </div>
                     </div>
-                        <div id="post-content" class="mt-2 mb-4">
+                        <div id="post-content" class="mt-2">
                             <h2 class="font-regular text-s text-gray-800">
-                            {{ $post->description }}
+                                {{ $post->description }}
                                 <img src="{{ $post['img_url'] }}" class="w-full object-cover mt-2">
                             </h2>
-                            <div id="post-footer" class="flex flex-row justify-between mt-3 ">
-                        <div id="likes" class="flex flex-row items-center">
+                        <div id="post-footer" class="flex flex-row justify-between mt-3">
+                            <div id="likes" class="flex flex-row items-center">
                             
                             @php
                             $likesCollection = collect($post['likes']);

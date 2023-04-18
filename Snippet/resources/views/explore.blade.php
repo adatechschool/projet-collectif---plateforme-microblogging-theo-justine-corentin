@@ -3,7 +3,7 @@
 @endphp
 
 <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
         {{ __('Explore') }}
     </h2>
 </x-slot>
@@ -21,11 +21,11 @@
                         </div>
                         <div>
                             @if ($connectedUserId === $post['user']['id'])
-                                <a href='/wall' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-700">
+                                <a href='/wall' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-600">
                                     {{$post['user']['name']}}
                                 </a>
                             @else
-                                <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-700">
+                                <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800 ml-3  hover:text-indigo-600">
                                     {{$post['user']['name']}}
                                 </a>
                                 @endif
@@ -80,10 +80,10 @@
             @if($hasMorePages)
                 <div class="flex items-center justify-center mt-4">
                     <button
-                        class="px-4 py-3 text-lg font-semibold text-white rounded-xl bg-green-500 hover:bg-green-400"
+                        class="px-4 py-3 text-lg font-semibold text-white rounded-xl bg-indigo-600 hover:bg-indigo-500"
                         wire:click="loadPosts"
                     >
-                        Load More
+                        Load more posts
                     </button>
                 </div>
             @endif
