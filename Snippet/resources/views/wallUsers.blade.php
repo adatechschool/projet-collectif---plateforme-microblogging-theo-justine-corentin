@@ -25,37 +25,52 @@
             </div>
             @endif
         </div>
-        <div class="container p-4 mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-4">
+        <div class="max-w-3xl p-4 mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 mt-4">
                 @foreach($posts as $post)
-                <div class="block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
-                    <h2 class="truncate font-semibold text-lg text-gray-800">
-                        {{ $post['user']['name']}}
-                    </h2>
-                    <h2 class="truncate font-semibold text-lg text-gray-800">
-                        {{ $post->description }}
-                    </h2>
-                    <img src="{{ $post->img_url }}" class="object-cover">
-                    @php
-                        $likesCollection = collect($post['likes']);
-                        $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
-                    @endphp
-                    <!-- LIKÉ -->
-                    @if ($userLikedPost)
-                        <div>
-                            <x-primary-button class="ml-3" wire:click.prevent="removeLike({{ $post['id'] }}, {{ $likesCollection->firstWhere('user_id', auth()->user()->id)['id'] }})">
-                                {{ __('Unlike') }}
-                            </x-primary-button>
+                <div class="block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">   
+               <div id="headerPost" class="flex flex-row break-words items-center">
+                   <div id="profile-picture" class="flex items-center">
+                       <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-12 h-12 rounded-full object-cover">
+                       
+                           <h2 class="truncate font-semibold text-lg text-gray-800 ml-3">
+                           {{ $post['user']['name']}}
+                            </h2>
+                        
                         </div>
-                    @else
-                    <!-- NON LIKÉ -->
-                        <div>
-                            <x-primary-button class="ml-3" wire:click.prevent="addLike({{ $post['id'] }})">
-                                {{ __('like') }}
-                            </x-primary-button>
+                    </div>
+                        <div id="post-content" class="mt-2 mb-4">
+                            <h2 class="font-regular text-s text-gray-800">
+                            {{ $post->description }}
+                                <img src="{{ $post['img_url'] }}" class="w-full object-cover mt-2">
+                            </h2>
+                            <div id="post-footer" class="flex flex-row justify-between mt-3 ">
+                        <div id="likes" class="flex flex-row items-center">
+                            
+                            @php
+                            $likesCollection = collect($post['likes']);
+                            $userLikedPost = $likesCollection->contains('user_id', auth()->user()->id);
+                            @endphp
+                            <!-- LIKÉ -->
+                            @if ($userLikedPost)
+                            <div>
+                                <x-primary-button class="" wire:click.prevent="removeLike({{ $post['id'] }}, {{ $likesCollection->firstWhere('user_id', auth()->user()->id)['id'] }})">
+                                    {{ __('Unlike') }}
+                                </x-primary-button>
+                            </div>
+                            
+                            @else
+                            <!-- NON LIKÉ -->
+                            <div>
+                                <x-primary-button class="" wire:click.prevent="addLike({{ $post['id'] }})">
+                                    {{ __('like') }}
+                                </x-primary-button>
+                            </div>
+                            @endif      
+                            <p class="ml-3">{{$likesCollection->count()}} ❤️</p>   
                         </div>
-                    @endif
-                <p>{{$likesCollection->count()}} ❤️</p>
+                    </div>
+                </div>
             </div>
             @endforeach
             </div>

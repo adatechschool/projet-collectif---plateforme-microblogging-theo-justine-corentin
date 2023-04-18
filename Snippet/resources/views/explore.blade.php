@@ -16,7 +16,7 @@
                 @foreach($posts as $post)
                 <div class=" block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
                     <div id="headerPost" class="flex flex-row break-words items-center">
-                        <div id="">
+                        <div id="profile-picture">
                             <img src="{{ $post['user']['url_photo'] }}" alt="Photo de profil" class="w-12 h-12 rounded-full object-cover">
                         </div>
                         <div>
