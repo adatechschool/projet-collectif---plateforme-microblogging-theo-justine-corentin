@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WallController;
-use App\Http\Controllers\WallUsersController;
-use App\Http\Controllers\AddLikeController;
+use App\Http\Livewire\WallUsers;
+use App\Http\Livewire\PostListing;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/explore', App\Http\Livewire\PostListing::class)->middleware(['auth', 'verified'])->name('explore');
+Route::get('/explore', PostListing::class)->middleware(['auth', 'verified'])->name('explore');
 
 Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
 
@@ -37,7 +36,7 @@ Route::post('/post', [PostController::class, 'update'])->middleware(['auth', 've
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
 
 // WALL AUTRE USER
-Route::resource('/walls', WallUsersController::class)->middleware(['auth', 'verified']);
+Route::get('/wall/{id}', WallUsers::class)->middleware(['auth', 'verified'])->name('wall.show');
 
 Route::get('/home', function () {
     return view('home');

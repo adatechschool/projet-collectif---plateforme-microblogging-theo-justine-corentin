@@ -20,7 +20,7 @@
                             {{$post['user']['name']}}
                         </a>
                     @else
-                        <a href='/walls/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
+                        <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800">
                             {{$post['user']['name']}}
                         </a>
                     @endif
