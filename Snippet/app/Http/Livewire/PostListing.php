@@ -15,6 +15,15 @@ class PostListing extends Component
 
     public $hasMorePages;
 
+    public function removePost($postId)
+    {
+        $post = Post::find($postId);
+        $post->delete();
+
+        $this->posts = $this->posts->filter(function ($post) use ($postId) {
+            return $post['id'] != $postId;
+        });
+    }
     public function addLike($postId)
     {
         $like = new Likes([
