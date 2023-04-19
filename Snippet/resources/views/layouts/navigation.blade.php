@@ -21,28 +21,29 @@
                     <x-nav-link :href="route('wall')" :active="request()->routeIs('wall')">
                         {{ __('Wall') }}
                     </x-nav-link>
-                    <!-- Search Bar -->
-                    <div class="relative pt-3">
-                        <form action="/search" method="GET">
-                            <!-- text a l'interrieur de l'input en blanc -->
-                            <input type="search" name="query" placeholder="Search..." class="bg-gray-100 dark:bg-gray-900 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-60 text-gray-800 dark:text-gray-200" required>
-                            <button type="submit" class="absolute right-0 top-3 mt-3 mr-4">
-                            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.966 56.966">
-                                <path d="M55.146 51.887L41.588 37.786c3.486-4.144 5.396-9.358 5.396-14.786 0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.923 2.162.923.779 0 1.518-.297 2.079-.837 1.194-1.145 1.238-3.149.084-4.343zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z"/>
-                            </svg>
-                            </button>
-                        </form>
-                    </div>
                 </div>
             </div>
-
+            
+            <!-- Search Bar -->
+            <div class="relative pt-3">
+                <form action="/search" method="GET">
+                    <!-- text a l'intérieur de l'input en blanc -->
+                    <input type="search" name="query" placeholder="Search..." class="bg-gray-100 dark:bg-gray-900 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-60 text-gray-800 dark:text-gray-200" required>
+                    <button type="submit" class="absolute right-0 top-3 mt-3 mr-4">
+                    <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.966 56.966">
+                        <path d="M55.146 51.887L41.588 37.786c3.486-4.144 5.396-9.358 5.396-14.786 0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.923 2.162.923.779 0 1.518-.297 2.079-.837 1.194-1.145 1.238-3.149.084-4.343zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z"/>
+                    </svg>
+                    </button>
+                </form>
+            </div>
+            
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>
-                                <img class="h-8 w-8 rounded-full object-cover mr-3" src="{{ Auth::user()->url_photo }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-8 w-8 rounded-full object-cover mr-3 border-solid border border-indigo-600 shadow-lg shadow-indigo-500/50" src="{{ Auth::user()->url_photo }}" alt="{{ Auth::user()->name }}" />
                             </div>
                             <div>{{ Auth::user()->name }}</div>
                             <div class="ml-1">
