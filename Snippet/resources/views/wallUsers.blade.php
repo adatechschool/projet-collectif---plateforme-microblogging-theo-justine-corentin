@@ -1,5 +1,5 @@
 <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center mt-16">
             Wall of {{ $user->name }}
         </h2>
     </x-slot>
@@ -7,7 +7,7 @@
     <div>
 
         <div id="presentation" class="flex flex-col text-center gap-1">
-            <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-32 h-32 rounded-full object-cover mx-auto my-4">
+            <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-32 h-32 rounded-full object-cover mx-auto my-4 border-solid border-2 border-indigo-600 shadow-lg shadow-indigo-500/50">
             <p class="font-semibold text-xl text-gray-100 dark:text-gray-200 leading-tight">{{$user->name}}</p>
             <p class="font-regular text-base text-gray-100 dark:text-gray-200 leading-tight">{{$user->biography}}</p>
             <div id="subscription">

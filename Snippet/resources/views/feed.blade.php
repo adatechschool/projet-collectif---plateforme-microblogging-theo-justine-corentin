@@ -3,7 +3,7 @@
 @endphp
 
 <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center mt-16">
             {{ __('Feed') }}
         </h2>
 </x-slot>
@@ -83,7 +83,7 @@
             @if($hasMorePages)
                 <div class="flex items-center justify-center mt-4">
                     <button
-                        class="px-4 py-3 text-lg font-semibold text-white rounded-xl bg-green-500 hover:bg-green-400"
+                        class="px-4 py-3 text-lg font-semibold text-white rounded-xl bg-indigo-600 hover:bg-indigo-500"
                         wire:click="loadPosts"
                     >
                         Load More
