@@ -15,7 +15,6 @@
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 mt-4">
                 @foreach($posts as $post)
                 <div class=" block p-4 bg-white rounded shadow-sm hover:shadow overflow-hidden">
-                    
                 <div id="headerPost" class="flex flex-row justify-between break-words items-center">
                     <div class="flex flex-row items-center justify-between">
                         <div id="profile-picture">

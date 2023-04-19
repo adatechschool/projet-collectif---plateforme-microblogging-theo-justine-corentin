@@ -18,6 +18,31 @@ class FeedListing extends Component
     public $subscriptions;
     protected $listeners = ['loadMore'];
 
+    public function addSub($userId) {
+        $sub = new Subscription([
+            'followed_id' => $userId,
+            'following_id' => auth()->user()->id,
+        ]);
+
+        $sub->save();
+
+        // Ajouter le nouvel abonnement à la collection d'abonnements
+        $this->subscriptions->push($sub);
+
+        // Émettre un événement pour recharger la page (si nécessaire)
+        $this->emit('subscriptionAdded');
+    }
+    public function deleteSub($subscriptionId)
+    {
+        // Trouver et supprimer l'abonnement
+        $subscription = Subscription::find($subscriptionId);
+        $subscription->delete();
+
+        // Mettez à jour cette partie en fonction de votre implémentation
+        $this->subscriptions = $this->subscriptions->filter(function ($subscription) use ($subscriptionId) {
+            return $subscription['id'] != $subscriptionId;
+        });
+    }
     public function addLike($postId)
     {
         $like = new Likes([

@@ -38,10 +38,13 @@
                     </div>
                     
                     <div id="post-footer" class="flex">
-                        <!-- vérifier "post/posts" cf chatgpt -->
-                        <x-primary-button class="ml-auto" wire:click.prevent="removePost({{ $posts }})"> 
-                            {{ __('🗑️') }}
-                        </x-primary-button>
+                        <!-- form qui appel son controleur pour supprimer -->
+                        <form action="{{ route('post.destroy', $posts->id) }}" method="POST" class="ml-auto">
+                            @csrf
+                            @method('DELETE')
+                            <x-primary-button class="ml-auto"> 
+                                {{ __('🗑️') }}
+                            </x-primary-button>
                     </div>
                 </div>
                 @endforeach

@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 class WallController extends Controller
 {
 
-    
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->back();
+    }
     public function show(Request $request)
     {
         // Récupérer l'utilisateur connecté

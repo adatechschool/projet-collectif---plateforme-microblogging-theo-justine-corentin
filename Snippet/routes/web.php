@@ -35,6 +35,8 @@ Route::get('/wall/{id}', WallUsers::class)->middleware(['auth', 'verified'])->na
 
 // WALL PERSO CO
 Route::get('/wall', [WallController::class, 'show'])->middleware(['auth', 'verified'])->name('wall');
+// ROUTE TO DELETE POST FROM DB
+Route::delete('/post/{id}', [WallController::class, 'destroy'])->middleware(['auth', 'verified'])->name('post.destroy');
 
 // ROUTE ADD POST TO DB
 Route::post('/post', [PostController::class, 'update'])->middleware(['auth', 'verified'])->name('post.update');
