@@ -3,16 +3,9 @@
 @endphp
 
 <x-slot name="header">
-<<<<<<< Updated upstream
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
             {{ __('Feed') }}
         </h2>
-    </x-slot>
-=======
->>>>>>> Stashed changes
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        {{ __('Feed') }}
-    </h2>
 </x-slot>
 <div>
     <div>
