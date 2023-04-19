@@ -15,6 +15,9 @@ class FeedListing extends Component
     public $pageNumber = 1;
 
     public $hasMorePages;
+    public $subscriptions;
+    protected $listeners = ['loadMore'];
+
     public function addLike($postId)
     {
         $like = new Likes([
@@ -63,19 +66,20 @@ class FeedListing extends Component
         }
         $posts = Post::whereIn('user_id', $followed)->orderBy('created_at', 'desc')->paginate(5, ['*'], 'page', $this->pageNumber);
         $this->hasMorePages = $posts->hasMorePages();
-        $this->posts = $this->posts->merge($posts->items());
-        $this->pageNumber++;
+        $this->posts = $this->posts->merge($posts->items()); // Utilisez la méthode merge() pour fusionner les nouveaux posts
+        $this->pageNumber += 1;
     }
     
-
     public function mount()
     {
         $this->posts = new Collection();
+        $this->subscriptions = Subscription::where('following_id', auth()->user()->id)->get();
+
         $this->loadPosts();
     }
 
     public function render()
     {
-        return view('feed');
+        return view('feed')->layout('layouts.explore');
     }
 }

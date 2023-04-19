@@ -9,9 +9,6 @@
 </x-slot>
 <div>
     <div>
-        @include('layouts.post')
-    </div>
-    <div>
         </div>
         <div class="max-w-3xl p-4 mx-auto">
             <h1 class="font-semibold text-2xl text-white">All Posts</h1>
@@ -79,7 +76,6 @@
             </div>
             @endforeach
         </div>
-
             @if($hasMorePages)
                 <div class="flex items-center justify-center mt-4">
                     <button

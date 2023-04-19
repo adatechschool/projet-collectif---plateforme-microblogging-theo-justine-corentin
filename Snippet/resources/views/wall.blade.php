@@ -24,7 +24,6 @@
                     <div id="headerPost" class="flex flex-row break-words items-center">
                         <div id="profile-picture" class="flex items-center">
                             <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-12 h-12 rounded-full object-cover">
-                            
                             <h2 class="truncate font-semibold text-lg text-gray-800 ml-3">
                                 {{ $user->name}}
                             </h2>  

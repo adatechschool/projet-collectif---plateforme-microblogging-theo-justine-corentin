@@ -92,7 +92,6 @@
             </div>
             @endforeach
         </div>
-
             @if($hasMorePages)
                 <div class="flex items-center justify-center mt-4">
                     <button
