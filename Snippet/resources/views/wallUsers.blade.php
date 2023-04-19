@@ -7,7 +7,7 @@
     <div>
 
         <div id="presentation" class="flex flex-col text-center gap-1">
-            <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-32 h-32 rounded-full object-cover mx-auto my-4 border-solid border-2 border-indigo-600 shadow-lg shadow-indigo-500/50">
+            <img src="{{ $user->url_photo }}" alt="Photo de profil" class="w-32 h-32 rounded-full object-cover mx-auto my-4 border-solid border-2 border-pink-700 shadow-lg shadow-pink-500/50">
             <p class="font-semibold text-xl text-gray-100 dark:text-gray-200 leading-tight">{{$user->name}}</p>
             <p class="font-regular text-base text-gray-100 dark:text-gray-200 leading-tight">{{$user->biography}}</p>
             <div id="subscription">

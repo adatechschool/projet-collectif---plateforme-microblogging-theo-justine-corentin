@@ -43,7 +43,7 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>
-                                <img class="h-8 w-8 rounded-full object-cover mr-3 border-solid border border-indigo-600 shadow-lg shadow-indigo-500/50" src="{{ Auth::user()->url_photo }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-8 w-8 rounded-full object-cover mr-3 border-solid border border-pink-700 shadow-lg shadow-pink-500/50" src="{{ Auth::user()->url_photo }}" alt="{{ Auth::user()->name }}" />
                             </div>
                             <div>{{ Auth::user()->name }}</div>
                             <div class="ml-1">

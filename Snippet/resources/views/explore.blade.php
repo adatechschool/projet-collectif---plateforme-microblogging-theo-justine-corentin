@@ -22,14 +22,14 @@
                         </div>
                         <div class="flex flex-row">
                             @if ($connectedUserId === $post['user']['id'])
-                            <a href='/wall' class="truncate font-semibold text-lg text-gray-800 ml-3 hover:text-indigo-700">
+                            <a href='/wall' class="truncate font-semibold text-lg text-gray-800 ml-3 hover:text-pink-700">
                                 {{$post['user']['name']}}
                             </a>
                             @else
                                 @php
                                     $subscription = $subscriptions->firstWhere('followed_id', $post['user']['id']);
                                 @endphp
-                                    <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800 ml-3 hover:text-indigo-700">
+                                    <a href='/wall/{{ $post['user']['id']}}' class="truncate font-semibold text-lg text-gray-800 ml-3 hover:text-pink-700">
                                         {{$post['user']['name']}}
                                     </a>
                                     @if ($subscription)
@@ -94,7 +94,7 @@
             @if($hasMorePages)
                 <div class="flex items-center justify-center mt-4">
                     <button
-                        class="px-4 py-3 text-lg font-semibold text-white rounded-xl bg-indigo-600 hover:bg-indigo-500"
+                        class="px-4 py-3 text-lg font-semibold text-white rounded-xl bg-pink-700 hover:bg-pink-500"
                         wire:click="loadPosts"
                     >
                         Load more posts

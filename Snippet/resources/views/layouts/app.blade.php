@@ -7,6 +7,10 @@
         @livewireStyles
         <title>Snippet</title>
 
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('logo_snippet.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('logo_snippet.png') }}" type="image/x-icon">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -21,7 +25,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="bg-white dark:bg-gray-800 shadow top-5">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

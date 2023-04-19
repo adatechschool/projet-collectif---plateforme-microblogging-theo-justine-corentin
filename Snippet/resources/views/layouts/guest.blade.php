@@ -7,6 +7,10 @@
 
         <title>Snippet</title>
 
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('logo_snippet.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('logo_snippet.png') }}" type="image/x-icon">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -18,7 +22,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <img src="{{ asset('logo_snippet_login.png') }}" class="w-auto h-20 fill-current text-gray-500" />
                 </a>
             </div>
 
