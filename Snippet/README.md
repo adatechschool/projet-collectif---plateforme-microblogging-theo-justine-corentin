@@ -40,7 +40,7 @@ Pistes d'amélioration
 * Ajouter une fonction "hashtags"
 * Ajouter une fonction pour que l'utilisateur connecté puisse modifier ses posts
 * Améliorer la barre de recherche pour accéder à d'autres éléments sur la plateforme (posts, biographies, hashtags, etc.)
-* Ajouter dans le dropdown menu une section pour visualiser les abbonements et abonnés de l'utilisateur connecté
+* Ajouter dans le dropdown menu une section pour visualiser les abonnements et abonnés de l'utilisateur connecté
 * Implémenter un moteur de recommandations 
 * Mettre en place des tests unitaires et tests navigateur
 
