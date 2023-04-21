@@ -35,7 +35,7 @@
                                     @if ($subscription)
                                         <div class="ml-auto">
                                             <x-primary-button class="ml-3" wire:click.prevent="deleteSub({{ $subscription['id'] }})">
-                                                {{ __('SE DÉSABONNER') }}
+                                                SE DÉSABONNER
                                             </x-primary-button>
                                         </div>
                                     @else
@@ -102,4 +102,20 @@
                 </div>
             @endif
     </div>
+    <footer class="flex justify-between bg-gray-200 dark:bg-gray-800">
+        <div class="flex justify-center items-center pl-6">
+            <a href="https://www.linkedin.com/in/justinerougeulle/" class="text-center text-gray-500 dark:text-gray-400">
+                Corentin Monvillers - 
+            </a>
+            <a href="https://www.linkedin.com/in/corentin-monvillers/" class="text-center text-gray-500 dark:text-gray-400">
+                &nbsp;Justine Rougeulle -
+            </a>
+            <a href="https://www.linkedin.com/in/theo-seuge/" class="text-center text-gray-500 dark:text-gray-400">
+                &nbsp;Théo Seugé
+            </a>
+        </div>
+        <div class="flex justify-center items-center pr-6">
+            <img src="https://i.imgur.com/49t8Tzw.png" alt="Logo" class="w-18 h-8 mx-auto my-4">
+        </div>
+    </footer>
 </div>
