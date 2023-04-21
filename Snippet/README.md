@@ -1,66 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Snippet
+=============
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+__Authors__ Corentin Monvillers, Justine Rougeulle, Théo Seugé
 
-## About Laravel
+Projet réalisé dans le cadre de la formation à Ada Tech School en 6 jours
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Vous pouvez accéder au projet via ce lien (informations de connexion sur la page d'accueil) :
+_ _ _ _ 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Objectifs du projet
+---------------
+- [x] Appréhender un framework MVC (Laravel 8)
+- [x] Utiliser un gestionnaire de conteneurs (Docker)
+- [x] Utiliser un ORM
+- [x] Manipuler un moteur de templates (Blade)
+- [x] Interagir avec une base de données (Supabase)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+Features & réalisations
+---------------
+* Implémentation de la partie authentification avec Breeze (page login, register, édition du profil)
+* Création de la base de données relationnelle (users, posts, etc.)
+* Création d'un formulaire pour la publication de posts par l'utilisateur connecté
+* Création d'une page affichant les informations et les posts de l'utilisateur connecté ("Wall")
+* Création des pages pour afficher les posts des autres utilisateurs lorsqu'on clique sur leur nom
+* Page de visualistion de tous les posts de la plateforme ("Explore")
+* Implémentation d'un bouton "load more" pour afficher plus de posts
+* Barre de recherche (pour les noms des utilisateurs uniquement)
+* Fonction "like" / "unlike" sur les posts + affichage du noombre de likes sur les posts
+* Fonction "suppression" pour les posts créés par l'utilisateur connecté
+* Fonction "s'abonner" / "se désabonner" sur les posts et profils des autrs utilisateurs
+* Création d'une page affichant les posts des utilisateurs auxquels on est abonné ("Feed")
+* Customisation du design Laravel, création de logo (home + navbar), ajout d'un favicon
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Pistes d'amélioration
+---------------
+* Ajouter une fonction "commentaires"
+* Ajouter une fonction "hashtags"
+* Ajouter une fonction pour que l'utilisateur connecté puisse modifier ses posts
+* Améliorer la barre de recherche pour accéder à d'autres éléments sur la plateforme (posts, biographies, hashtags, etc.)
+* Ajouter dans le dropdown menu une section pour visualiser les abbonements et abonnés de l'utilisateur connecté
+* Implémenter un moteur de recommandations 
+* Mettre en place des tests unitaires et tests navigateur
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Photos du projet 
+---------------
 
-## Laravel Sponsors
+Page Register :
+<img width="1416" alt="register" src="https://user-images.githubusercontent.com/115532914/233619039-fb571ffd-86c3-4873-a022-94ad0f0df1b3.png">
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Page Login :
+<img width="1416" alt="login" src="https://user-images.githubusercontent.com/115532914/233619111-da6c3ed0-c9b7-4480-8808-2305f38326ff.png">
 
-### Premium Partners
+Page Explore :
+<img width="1416" alt="explore" src="https://user-images.githubusercontent.com/115532914/233619142-2403f9d6-ae92-4927-af07-9b37a9d785d0.png">
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Page Wall (autre utilisateur) :
+ <img width="1416" alt="wall_user" src="https://user-images.githubusercontent.com/115532914/233619428-4d2c0401-bcbd-4063-945c-e5a3b68456da.png">
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Page Dashboard :
+<img width="1417" alt="dashboard" src="https://user-images.githubusercontent.com/115532914/233619457-80590cd0-71cf-4ceb-b2f5-0c89f971b4fc.png">
