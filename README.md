@@ -1,11 +1,11 @@
 Snippet
 =============
 
-__Authors__ Corentin Monvillers, Justine Rougeulle, Théo Seugé
+__Authors :__ Corentin Monvillers, Justine Rougeulle, Théo Seugé.
 
-Projet réalisé dans le cadre de la formation à Ada Tech School en 6 jours
+Projet réalisé dans le cadre de la formation à Ada Tech School en 6 jours.
 
-Vous pouvez accéder au projet via ce lien (informations de connexion sur la page d'accueil) :
+Vous pouvez accéder au projet via ce lien :
 _ _ _ _ 
 
 Objectifs du projet
